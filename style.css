@@ -1,40 +1,194 @@
-:root{
-  --bg:#05060b;
-  --panel:rgba(14,16,28,.68);
-  --text:#f5f7ff;
-  --muted:#9ca4bc;
-  --line:rgba(255,255,255,.10);
-  --cyan:#00f5ff;
-  --blue:#4d6dff;
-  --pink:#ff2bd6;
-  --purple:#9b4dff;
+.contact{padding-top:60px;padding-bottom:90px}
+.contact-box{text-align:center;border-radius:24px;padding:70px 30px;position:relative;overflow:hidden}
+.contact-box:before{
+  content:"";
+  position:absolute;
+  width:350px;
+  height:350px;
+  background:var(--cyan);
+  opacity:.07;
+  filter:blur(90px);
+  left:50%;
+  top:40%;
+  transform:translate(-50%,-50%)
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,Arial,sans-serif;color:var(--text);background:var(--bg);
-  overflow-x:hidden;line-height:1.6;
+.contact-box>*{position:relative}
+
+.contact-box h2{
+  font-size:clamp(40px,6vw,70px);
+  letter-spacing:-3px
 }
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;
-  background:
-    radial-gradient(circle at 20% 10%,rgba(0,245,255,.08),transparent 27%),
-    radial-gradient(circle at 80% 30%,rgba(255,43,214,.07),transparent 28%),
-    linear-gradient(125deg,#04050a,#090a14 50%,#04050a);
+
+.contact-box>p:not(.eyebrow){
+  color:#8f98af;
+  margin:16px 0 28px
 }
-.noise{position:fixed;inset:0;opacity:.035;pointer-events:none;z-index:10;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
-.orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.20;z-index:-2;pointer-events:none}
-.orb-1{width:350px;height:350px;background:var(--cyan);left:-180px;top:25%}
-.orb-2{width:420px;height:420px;background:var(--pink);right:-230px;top:45%}
-.orb-3{width:280px;height:280px;background:var(--purple);left:40%;bottom:-160px}
-.navbar{
-  position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:20;
-  width:min(1180px,92%);margin-top:18px;padding:12px 18px;
-  display:flex;align-items:center;justify-content:space-between;
-  border:1px solid var(--line);border-radius:18px;background:rgba(5,6,11,.72);
-  backdrop-filter:blur(18px);box-shadow:0 10px 50px rgba(0,0,0,.3);
+
+.contact-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap
 }
-.logo{font-family:"Space Grotesk";font-weight:800;letter-spacing:.5px;color:white;text-decoration:none}
+
+footer{
+  width:min(1120px,90%);
+  margin:auto;
+  padding:25px 0 40px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  color:#656d83;
+  font-size:10px;
+  letter-spacing:.5px
+}
+
+
+/* =========================
+   FIX CONTENT AGAR TIDAK KOSONG
+   ========================= */
+
+.reveal{
+  opacity:1;
+  transform:none;
+  transition:opacity .7s ease, transform .7s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+
+/* =========================
+   TABLET / HP
+   ========================= */
+
+@media(max-width:850px){
+
+  .navbar{
+    margin-top:10px
+  }
+
+  .menu-toggle{
+    display:block
+  }
+
+  nav{
+    display:none;
+    position:absolute;
+    top:62px;
+    left:0;
+    right:0;
+    padding:10px;
+    background:rgba(5,6,11,.96);
+    border:1px solid var(--line);
+    border-radius:14px;
+    flex-direction:column
+  }
+
+  nav.open{
+    display:flex
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    padding-top:130px;
+    gap:60px
+  }
+
+  .hero-photo{
+    justify-self:center;
+    width:min(430px,92%)
+  }
+
+  .card-a{
+    left:-10px
+  }
+
+  .card-b{
+    right:-10px
+  }
+
+  .about-grid,
+  .project-card{
+    grid-template-columns:1fr
+  }
+
+  .project-image{
+    min-height:360px
+  }
+
+  .image-glow{
+    background:
+      linear-gradient(
+        0deg,
+        rgba(5,6,11,.88),
+        transparent 70%
+      )
+  }
+
+  .project-info{
+    padding:35px 27px
+  }
+
+  .project-info h3{
+    font-size:34px
+  }
+
+  .skill-grid{
+    grid-template-columns:1fr
+  }
+}
+
+
+/* =========================
+   HP KECIL
+   ========================= */
+
+@media(max-width:520px){
+
+  .logo{
+    font-size:12px
+  }
+
+  .section{
+    padding:85px 0
+  }
+
+  .hero{
+    min-height:auto
+  }
+
+  .hero h1{
+    letter-spacing:-2.5px
+  }
+
+  .mini-stats{
+    gap:18px
+  }
+
+  .photo-frame img{
+    height:500px
+  }
+
+  .floating-card{
+    font-size:11px
+  }
+
+  .project-small-grid{
+    grid-template-columns:1fr
+  }
+
+  .project-image{
+    min-height:330px
+  }
+
+  footer{
+    flex-direction:column;
+    gap:7px
+  }
+}.logo{font-family:"Space Grotesk";font-weight:800;letter-spacing:.5px;color:white;text-decoration:none}
 .logo span:first-child{color:var(--cyan);text-shadow:0 0 15px var(--cyan);margin-right:7px}
 .logo span:last-child{color:#8b92aa}
 nav{display:flex;gap:8px}
