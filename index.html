@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio Risky Ramadhan, siswa RPL asal Tebas dengan desain RGB dan mini-game Tebak Kata.">
+  <title>Risky Ramadhan | Digital Creator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <header class="navbar">
+    <a class="logo" href="#home"><span class="logo-mark">◆</span> RISKY<span>RAMADHAN</span></a>
+    <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <nav id="nav">
+      <a href="#home" data-nav>Home</a>
+      <a href="#about" data-nav>Tentang</a>
+      <a href="#projects" data-nav>Project</a>
+      <a href="#skills" data-nav>Skill</a>
+      <a href="#game" data-nav>Game</a>
+      <a href="#contact" data-nav>Kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="dot"></span> Digital Creator dari Tebas</p>
+        <h1>Membuat ide menjadi sesuatu yang <span class="gradient-text">keren.</span></h1>
+        <p class="hero-text">
+          Saya Risky Ramadhan, siswa Rekayasa Perangkat Lunak kelas XII RPL 1 asal Tebas.
+          Saya suka mengubah ide sederhana menjadi tampilan digital yang hidup — mulai dari
+          desain antarmuka, coding, sampai eksperimen kecil dengan AI. Bagi saya, setiap
+          project adalah cara belajar sambil berkarya.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Lihat Project</a>
+          <a class="btn btn-ghost" href="#game">Coba Game</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-title">Tentang Saya</h2>
+      <div class="about-grid">
+        <div class="about-main reveal">
+          <img class="about-photo" src="foto-profil.jpg" alt="Foto Risky Ramadhan di depan air terjun">
+          <p class="about-text">
+            Nama saya Risky Ramadhan, saat ini duduk di kelas XII RPL 1 dan tinggal di Tebas.
+            Sejak masuk jurusan Rekayasa Perangkat Lunak, saya tertarik pada bagaimana desain
+            dan kode bisa bekerja sama membangun pengalaman digital yang enak dipakai. Di luar
+            jam sekolah, saya sering iseng membuat tampilan web baru atau mempelajari hal-hal
+            seputar AI dan desain antarmuka.
+          </p>
+        </div>
+        <ul class="about-facts reveal">
+          <li><span>Nama</span>Risky Ramadhan</li>
+          <li><span>Kelas</span>XII RPL 1</li>
+          <li><span>Domisili</span>Tebas</li>
+          <li><span>Fokus</span>Web Development & Design</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="section-title">Project</h2>
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <h3>Portfolio RGB</h3>
+          <p>Website portfolio pribadi dengan aksen glow RGB dan nuansa gelap, dibangun untuk menampilkan identitas sebagai digital creator.</p>
+        </article>
+        <article class="project-card reveal">
+          <h3>Eksperimen UI Kelas RPL</h3>
+          <p>Kumpulan latihan tampilan antarmuka dari tugas dan eksplorasi mandiri selama belajar di kelas XII RPL 1.</p>
+        </article>
+        <article class="project-card reveal">
+          <h3>Coba-coba AI & Desain</h3>
+          <p>Eksperimen kecil menggabungkan alat AI dengan proses desain untuk mempercepat ide menjadi tampilan nyata.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2 class="section-title">Skill</h2>
+      <ul class="skill-list reveal">
+        <li>HTML & CSS</li>
+        <li>JavaScript Dasar</li>
+        <li>UI/UX Dasar</li>
+        <li>Pemecahan Masalah</li>
+      </ul>
+    </section>
+
+    <section id="game" class="section">
+      <h2 class="section-title">Main Dulu, Yuk</h2>
+      <p class="game-intro reveal">Pilih mau main tebak kata atau balapan hindari rintangan.</p>
+
+      <div class="game-tabs reveal" role="tablist">
+        <button class="game-tab is-active" id="tabWord" role="tab" aria-selected="true" data-target="panelWord" type="button">Tebak Kata</button>
+        <button class="game-tab" id="tabCar" role="tab" aria-selected="false" data-target="panelCar" type="button">Balap Mobil</button>
+      </div>
+
+      <div class="game-card reveal" id="panelWord" role="tabpanel">
+        <div class="game-top">
+          <span class="game-label">Tebak Kata</span>
+          <div class="game-lives" id="gameLives" aria-live="polite"></div>
+        </div>
+
+        <p class="game-word" id="gameWord" aria-live="polite"></p>
+
+        <p class="game-message" id="gameMessage">Tebak huruf pertamamu.</p>
+
+        <div class="game-keyboard" id="gameKeyboard"></div>
+
+        <button class="btn btn-ghost game-restart" id="gameRestart" type="button">Acak Kata Baru</button>
+      </div>
+
+      <div class="game-card car-card" id="panelCar" role="tabpanel" hidden>
+        <div class="game-top">
+          <span class="game-label">Balap Mobil</span>
+          <div class="car-scores">
+            <span>Skor: <strong id="carScore">0</strong></span>
+            <span>Rekor: <strong id="carHighscore">0</strong></span>
+          </div>
+        </div>
+
+        <div class="car-stage">
+          <canvas id="carCanvas" width="320" height="420" aria-label="Area permainan balap mobil"></canvas>
+          <div class="car-overlay" id="carOverlay">
+            <p class="car-overlay-title">Balap Mobil</p>
+            <p class="car-overlay-text">Hindari mobil lain selama mungkin. Pakai tombol panah / A D, atau tombol di bawah di HP.</p>
+            <button class="btn btn-primary" id="carStart" type="button">Mulai Main</button>
+          </div>
+        </div>
+
+        <div class="car-controls">
+          <button class="car-btn" id="carLeft" type="button" aria-label="Geser kiri">◀</button>
+          <button class="car-btn" id="carRight" type="button" aria-label="Geser kanan">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 class="section-title">Kontak</h2>
+      <p class="contact-text">
+        Tertarik berkolaborasi atau sekadar ingin ngobrol soal project? Silakan hubungi saya.
+      </p>
+      <a class="btn btn-primary" href="mailto:riskyramadhan@example.com">Kirim Email</a>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Risky Ramadhan. Dibuat dari Tebas.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
