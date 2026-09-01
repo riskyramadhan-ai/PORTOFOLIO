@@ -1,39 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
+// Toggle menu navigasi di layar kecil
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.getElementById('nav');
 
-    // ==============================
-    // MENU MOBILE
-    // ==============================
-    const menu = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("#nav");
+if (menuToggle && nav) {
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
 
-    if (menu && nav) {
-        menu.addEventListener("click", function () {
-            nav.classList.toggle("open");
-        });
-
-        document.querySelectorAll("#nav a").forEach(function (link) {
-            link.addEventListener("click", function () {
-                nav.classList.remove("open");
-            });
-        });
-    }
-
-
-    // ==============================
-    // ANIMASI REVEAL
-    // ==============================
-    const elements = document.querySelectorAll(".reveal");
-
-    // Tampilkan semua elemen terlebih dahulu
-    elements.forEach(function (element) {
-        element.classList.add("show");
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
     });
+  });
+}
 
+// Animasi reveal saat elemen masuk ke layar
+const revealTargets = document.querySelectorAll('.reveal, .section-title, .project-card');
 
-    // ==============================
-    // ANIMASI SAAT SCROLL
-    // ==============================
-    if ("IntersectionObserver" in window) {
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealTargets.forEach((el) => observer.observe(el));
+} else {
+  revealTargets.forEach((el) => el.classList.add('is-visible'));
+}
 
         const observer = new IntersectionObserver(
             function (entries) {
