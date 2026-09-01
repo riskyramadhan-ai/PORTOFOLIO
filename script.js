@@ -1,3 +1,7 @@
+// Tandai bahwa JS berhasil dimuat, supaya animasi reveal di CSS aktif.
+// Kalau baris ini tidak sempat jalan (script gagal load), konten tetap tampil normal.
+document.documentElement.classList.add('js-ready');
+
 // Toggle menu navigasi di layar kecil
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.getElementById('nav');
