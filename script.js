@@ -1,19 +1,60 @@
-document.documentElement.classList.remove("no-js");
-document.documentElement.classList.add("js");
+document.addEventListener("DOMContentLoaded", function () {
 
-const menu = document.querySelector('.menu-toggle');
-const nav = document.querySelector('#nav');
+    // ==============================
+    // MENU MOBILE
+    // ==============================
+    const menu = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#nav");
 
-menu.addEventListener('click', () => nav.classList.toggle('open'));
+    if (menu && nav) {
+        menu.addEventListener("click", function () {
+            nav.classList.toggle("open");
+        });
 
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', () => nav.classList.remove('open'));
+        document.querySelectorAll("#nav a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                nav.classList.remove("open");
+            });
+        });
+    }
+
+
+    // ==============================
+    // ANIMASI REVEAL
+    // ==============================
+    const elements = document.querySelectorAll(".reveal");
+
+    // Tampilkan semua elemen terlebih dahulu
+    elements.forEach(function (element) {
+        element.classList.add("show");
+    });
+
+
+    // ==============================
+    // ANIMASI SAAT SCROLL
+    // ==============================
+    if ("IntersectionObserver" in window) {
+
+        const observer = new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.05
+            }
+        );
+
+        elements.forEach(function (element) {
+            observer.observe(element);
+        });
+    }
+
 });
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('show');
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
